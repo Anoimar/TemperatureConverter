@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TempConverter</string>
+    <string name="convert_to_fahrenheit">Convert to Fahrenheit</string>
+    <string name="fahrenheit_result">%1$s \u2109</string>
+</resources>
