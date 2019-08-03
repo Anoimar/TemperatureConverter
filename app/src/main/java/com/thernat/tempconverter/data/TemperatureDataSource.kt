@@ -6,4 +6,5 @@ package com.thernat.tempconverter.data
 interface TemperatureDataSource {
 
     suspend fun convertFromCelsiusToFahrenheit(celsius: Double): String
+
 }

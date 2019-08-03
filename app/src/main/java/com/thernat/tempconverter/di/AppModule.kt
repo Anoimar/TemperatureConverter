@@ -3,6 +3,7 @@ package com.thernat.tempconverter.di
 import com.thernat.tempconverter.data.TemperatureRepository
 import com.thernat.tempconverter.MainPresenter
 import com.thernat.tempconverter.api.ApiService
+import com.thernat.tempconverter.data.TemperatureDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -18,7 +19,7 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory
  * Created by m.rafalski on 2019-06-29.
  */
 val applicationModule = module {
-    single { TemperatureRepository(get()) }
+    single<TemperatureDataSource> { TemperatureRepository(get()) }
     factory { MainPresenter(get()) }
     single {  }
 }

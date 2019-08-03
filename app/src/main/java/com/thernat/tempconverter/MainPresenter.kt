@@ -2,13 +2,14 @@ package com.thernat.tempconverter
 
 import android.util.Log
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
+import com.thernat.tempconverter.data.TemperatureDataSource
 import com.thernat.tempconverter.data.TemperatureRepository
 import kotlinx.coroutines.*
 
 /**
  * Created by m.rafalski on 2019-06-28.
  */
-class MainPresenter(private val temperatureRepository: TemperatureRepository): MvpBasePresenter<MainView>(){
+class MainPresenter(private val temperatureRepository: TemperatureDataSource): MvpBasePresenter<MainView>(){
 
     var fromCelsiusToFahrenheitJob: Job? = null
 
