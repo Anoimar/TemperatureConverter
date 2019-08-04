@@ -12,6 +12,8 @@ import kotlinx.coroutines.*
 class MainPresenter(private val temperatureRepository: TemperatureDataSource): MvpBasePresenter<MainView>(){
 
     var fromCelsiusToFahrenheitJob: Job? = null
+    var fromFahrenheitToCelsiusJob: Job? = null
+
 
     fun convertCelsiusToFahrenheit(celsius: Double){
         ifViewAttached { view -> view.showLoading() }
@@ -29,8 +31,25 @@ class MainPresenter(private val temperatureRepository: TemperatureDataSource): M
         }
     }
 
+    fun convertFahrenheitToCelsius(fahrenheit: Double){
+        ifViewAttached { view -> view.showLoading() }
+        ifViewAttached { view ->
+            fromFahrenheitToCelsiusJob =   CoroutineScope(Dispatchers.IO).launch{
+                try {
+                    val result = temperatureRepository.convertFromFahrenheitToCelsius(fahrenheit)
+                    withContext(Dispatchers.Main) {
+                        ifViewAttached {view.showConversionToCelsiusResult(result)}
+                    }
+                } catch (e: Exception) {
+                    Log.e("MainPresenter","Failed to convert Celsius to Fahrenheit",e)
+                }
+            }
+        }
+    }
+
     override fun detachView() {
         super.detachView()
         fromCelsiusToFahrenheitJob?.cancel()
+        fromFahrenheitToCelsiusJob?.cancel()
     }
 }

@@ -7,4 +7,7 @@ interface TemperatureDataSource {
 
     suspend fun convertFromCelsiusToFahrenheit(celsius: Double): String
 
+    suspend fun convertFromFahrenheitToCelsius(fahrenheit: Double): String
+
+
 }

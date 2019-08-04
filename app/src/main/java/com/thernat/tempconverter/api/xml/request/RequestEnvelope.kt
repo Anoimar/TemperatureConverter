@@ -14,6 +14,6 @@ import org.simpleframework.xml.Root
     Namespace(prefix = "xsd", reference = "http://www.w3.org/2001/XMLSchema"),
     Namespace(prefix = "soap", reference = "http://schemas.xmlsoap.org/soap/envelope/")
 )
-data class ConvertToFahrenheitRequestEnvelope(
-    @field:Element(name = "soap:Body") @param:Element(name = "soap:Body")val convertToFahrenheitRequestBody: ConvertToFahrenheitRequestBody
+data class RequestEnvelope(
+    @field:Element(name = "soap:Body") @param:Element(name = "soap:Body")val requestBody: RequestBody
 )

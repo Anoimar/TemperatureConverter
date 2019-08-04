@@ -11,4 +11,7 @@ interface MainView: MvpView {
 
     fun showConversionToFahrenheitResult(result: String)
 
+    fun showConversionToCelsiusResult(result: String)
+
+
 }

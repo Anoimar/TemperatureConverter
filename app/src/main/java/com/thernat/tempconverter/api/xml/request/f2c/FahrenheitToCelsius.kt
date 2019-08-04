@@ -1,4 +1,4 @@
-package com.thernat.tempconverter.api.xml.request
+package com.thernat.tempconverter.api.xml.request.f2c
 
 import org.simpleframework.xml.Namespace
 
@@ -7,4 +7,4 @@ import org.simpleframework.xml.Namespace
  */
 
 @Namespace(reference = "https://www.w3schools.com/xml/")
-data class CelsiusToFahrenheit(val Celsius: String)
+data class FahrenheitToCelsius(val Fahrenheit: String)
